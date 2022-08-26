@@ -38,10 +38,10 @@ output "public_ip_dns_name" {
   value       = azurerm_public_ip.vm.*.fqdn
 }
 
-output "availability_set_id" {
-  description = "id of the availability set where the vms are provisioned."
-  value       = azurerm_availability_set.vm.id
-}
+# output "availability_set_id" {
+#   description = "id of the availability set where the vms are provisioned."
+#   value       = azurerm_availability_set.vm.id
+# }
 
 output "vm_zones" {
   description = "map with key `Virtual Machine Id`, value `list of the Availability Zone` which the Virtual Machine should be allocated in."
