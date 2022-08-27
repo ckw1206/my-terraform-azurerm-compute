@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "vm-linux" {
   name                             = "${var.vm_hostname}-${count.index}"
   resource_group_name              = data.azurerm_resource_group.vm.name
   location                         = coalesce(var.location, data.azurerm_resource_group.vm.location)
-  availability_set_id              = azurerm_availability_set.vm.id
+#   availability_set_id              = azurerm_availability_set.vm.id
   vm_size                          = var.vm_size
   network_interface_ids            = [element(azurerm_network_interface.vm.*.id, count.index)]
   delete_os_disk_on_termination    = var.delete_os_disk_on_termination
@@ -144,7 +144,7 @@ resource "azurerm_virtual_machine" "vm-windows" {
   name                          = "${var.vm_hostname}-${count.index}"
   resource_group_name           = data.azurerm_resource_group.vm.name
   location                      = coalesce(var.location, data.azurerm_resource_group.vm.location)
-  availability_set_id           = azurerm_availability_set.vm.id
+#   availability_set_id           = azurerm_availability_set.vm.id
   vm_size                       = var.vm_size
   network_interface_ids         = [element(azurerm_network_interface.vm.*.id, count.index)]
   delete_os_disk_on_termination = var.delete_os_disk_on_termination
@@ -211,7 +211,7 @@ resource "azurerm_virtual_machine" "vm-windows" {
   tags = var.tags
 
   os_profile_windows_config {
-    provision_vm_agent = true
+    provision_vm_agent = false
   }
 
   dynamic "os_profile_secrets" {
